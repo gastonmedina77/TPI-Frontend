@@ -1,5 +1,5 @@
 ## System Bar
-![Design preview ](./src/img/reciplas.png)
+![Design preview ](./src/img/bar.png)
 
 ### Guia de instalación
 
@@ -10,9 +10,6 @@
     - npm i sass
     - npm run dev
 - Colocar la direccion que brinda la consola en un navegador web.
-- Datos para loguearse:
-    - usuario: admin@gmail.com
-    - contraseña: admin
 
 
 ### Built with
