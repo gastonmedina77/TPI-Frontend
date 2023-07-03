@@ -6,27 +6,23 @@ import Tablemercaderia from "./Tablemercaderia";
 const Registromercaderia = ({setMenuproduccion}) => {
   return (
     <div className="sectionTable">
-    <div className="viewTable">
-      <div className="headTable">
-        <h4> <FiCheckSquare/> Registro Insumos</h4>
-        <button 
-        className='addClient'
-        onClick={()=>setMenuproduccion('addMercaderia')}
-        >Registrar Insumos</button>
+      <div className="viewTable">
+        <div className="headTable">
+          <h4> <FiCheckSquare/> Productos Registrados</h4>
+          <button 
+            className='addClient'
+            onClick={()=>setMenuproduccion('addMercaderia')}
+          >Registrar Producto</button>
         </div>
         
-     
-     
       <div className="bodyTable">
         <div className="contentSearch">
           <Search/>
-          
         </div>
         
-       <Tablemercaderia setMenuproduccion={setMenuproduccion}/>
-         
+        <Tablemercaderia setMenuproduccion={setMenuproduccion}/>
         
-         <Paginacion/>
+        <Paginacion/>
       </div>
     </div>
     

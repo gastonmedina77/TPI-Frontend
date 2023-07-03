@@ -12,25 +12,24 @@ const Sectioncompras = ({setMenucompras}) => {
 
   return (
     <div className="sectionTable">
-    <div className="viewTable">
-      <div className="headTable">
-        <h4> <FiCheckSquare/> Registro Compras</h4>
-        <button 
-        className='addClient'
-        onClick={()=>handleAdd('addCompra')}
-        >Registrar Compra</button>
-      </div>
-      
-      <div className="bodyTable">
-        <div className="contentSearch">
-          <Search/>
-          
+      <div className="viewTable">
+        <div className="headTable">
+          <h4> <FiCheckSquare/> Compras Realizadas </h4>
+          <button 
+            className='addClient'
+            onClick={()=>handleAdd('addCompra')}
+          >Registrar Compra</button>
         </div>
+      
+        <div className="bodyTable">
+          <div className="contentSearch">
+            <Search/>
+          </div>
         
           <Tablecompra setMenucompras={setMenucompras}/>
-         <Paginacion/>
+          <Paginacion/>
+        </div>
       </div>
-    </div>
     
    </div>
   )

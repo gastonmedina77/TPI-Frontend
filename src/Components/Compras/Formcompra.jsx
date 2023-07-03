@@ -32,29 +32,29 @@ const Formcompra = ({setMenucompras}) => {
         <div className="headTable">
           <h4>
             {" "}
-            <FiBook /> Formularo de Registro de Compras
+            <FiBook /> Formulario de Registro de Compras
           </h4>
           <button className="addClient" onClick={() => handleAdd("registrocompra")}>
-            Volver a Registro
+            Volver a Compras
           </button>
         </div>
 
         <div className="bodyTable">
           <form className="colorful-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="form-label" htmlFor="name">
-                *N° de Factura:
+              <label className="form-label " htmlFor="name">
+                Id:<span className="marcas">*</span> 
               </label>
               <input
                 required
-                placeholder="Ingrese el numero de la factura"
+                placeholder="Id autogenerado"
                 className="form-input"
-                type="number"
+                type="text"
               />
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">
-                *Fecha de compra:
+                Fecha:<span className="marcas">*</span> 
               </label>
               <input
                 required
@@ -67,45 +67,96 @@ const Formcompra = ({setMenucompras}) => {
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">
-                *Nombre Comercial:
+                Proveedor:<span className="marcas">*</span> 
               </label>
               <input
                 required
-                placeholder="Ingres el nombre del proveedor"
+                placeholder="Nombre proveedor"
                 className="form-input"
                 name="date"
                 id="date"
                 type="text"
               />
             </div>
-            <div className="form-group">
-                  <label className="form-label" htmlFor="email">
-                    *Estado:
-                  </label>
-                  <select name="pets" id="pet-select" className="form-input " required>
-                    <option value="">Seleccione un Estado</option>
-                    <option value="argentina">Recibido</option>
-                    <option value="brazil">En espera</option>
-                  </select>
-                </div>
+            <div> </div>
+          
             <div className="form-group">
               <label className="form-label" htmlFor="email">
-                *Factura del proveedor(.pdf):
+                <span className="marcas"></span> 
               </label>
-              <input
-                required
-                placeholder="Suba el archivo .pdf"
-                className="form-input"
-                name="dni"
-                id="dni"
-                type="file"
-              />
+
             </div>
-            <div className="form-group">
-                 
-                </div>
+            <div className="form-group tableForm">
+              <table>
+                <tr>
+                  <td>
+                    <label className="form-label" htmlFor="email">
+                      Producto:<span className="marcas">*</span> 
+                    </label>
+                    <select
+                      name="pets"
+                      id="pet-select"
+                      className="form-input "
+                      required
+                    >
+                      <option value="">Seleccione un Producto</option>
+                      <option value="argentina">Producto1</option>
+                      <option value="brazil">Producto2</option>
+                      <option value="uruguay">Producto3</option>
+                      <option value="paraguay">Producto4</option>
+                      <option value="chile">Producto5</option>
+                      <option value="colombia">Producto6</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label className="form-label labelsmall" htmlFor="email">
+                      Cantidad:<span className="marcas">*</span> 
+                    </label>
+                    <input
+                      required
+                      placeholder="Ingrese la cantidad"
+                      className="form-input"
+                      name="dni"
+                      id="dni"
+                      type="number"
+                    />
+                  </td>
+                  <td>
+                    <label className="form-label" htmlFor="email">
+                      Precio:<span className="marcas"></span> 
+                    </label>
+                    <input
+                      placeholder="Ingrese el precio"
+                      className="form-input"
+                      name="dni"
+                      id="dni"
+                      type="number"
+                    />
+                  </td>
+                  <td>
+                    <label className="form-label" htmlFor="email">
+                      Subtotal:
+                    </label>
+                    <label className="form-label" htmlFor="email">
+                      $500
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <button className="form-button">Agregar +</button>
+                </tr>
+                <td>
+                    <label className="form-label" htmlFor="email">
+                      Total:
+                    </label>
+                    <label className="form-label" htmlFor="email">
+                     <span className="totalcompra">$500</span>
+                    </label>
+                  </td>
+              </table>
+            </div>
             <button className="form-button" type="submit">
-              GUARDAR
+              Guardar
             </button>
           </form>
 

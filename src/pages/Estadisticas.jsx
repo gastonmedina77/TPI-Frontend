@@ -71,17 +71,16 @@ const Estadisticas = () => {
                   required
                 >
                   <option value="">Seleccione el módulo</option>
-                  <option value="deudores">Deudores</option>
-                  <option value="proveedores">Proveedores - ultimos movimiento</option>
-                  <option value="pedidos">Pedidos</option>
-                  <option value="stock">Stock</option>
-                  <option value="producidos">Producidos</option>
+
                   <option value="compras">Compras</option>
                   <option value="ventas">Ventas</option>
                 </select>
               </div>
               <div className="form-group">
-                <button className="form-button">GENERAR</button>
+              <label className="form-label tapar" htmlFor="name">
+                  .
+                </label>
+                <button className="form-button">Generar</button>
               </div>
               <div className="form-group">
                 <span>

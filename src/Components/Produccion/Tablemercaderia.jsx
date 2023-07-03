@@ -4,16 +4,15 @@ import Swal from "sweetalert2";
 const Tablemercaderia = ({setMenuproduccion}) => {
   const Modalinfo = () => {
     Swal.fire({
-      title: "<strong>Detalle del Insumo <u>#</u></strong>",
+      title: "<strong>Detalle Producto <u></u></strong>",
       icon: "info",
       html:
-        '<p align="left"><b>N° de Factura: </b>, 0035 </br></br> ' +
-        "<b>Insumo: </b>, Insumo 1 </br></br>" +
-        "<b>Fecha de Compra: </b>, 01-08-23 </br></br>" +
-        "<b>Peso: </b>, 10kg </br></br>" +
-        "<b>Cantidad: </b>, 5 </br></br>" +
-        "<b>Precio Unitario: </b>, $500 </br></br>" +
-        "<b>Proveedor: </b>, Proveedor 1 </br></br></p>" ,
+        '<p align="left"><b>Id: </b> 1234 </br></br> ' +
+        "<b>Nombre: </b> Alfajor Fulbito </br></br>" +
+        "<b>Stock: </b> 20 </br></br>" +
+        "<b>Precio: </b> 100 </br></br>" +
+        "<b>Categoria: </b> Alfajores </br></br>" +
+        "<b>Fecha Actualización: </b> 22-08-23 </br></br>" ,
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
@@ -26,7 +25,7 @@ const Tablemercaderia = ({setMenuproduccion}) => {
 
   const Modaldelete = () => {
     Swal.fire({
-      title: "¿Esta seguro de eliminar este registro de compra de insumo?",
+      title: "¿Esta seguro de eliminar este Producto?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -48,16 +47,22 @@ const Tablemercaderia = ({setMenuproduccion}) => {
       <table>
         <thead>
           <tr>
-            <th>Insumo</th>
-            <th>Proveedor</th>
-            <th>Fecha de compra</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Categoria</th>
+            <th>Fecha actualización</th>
             <th>Acción</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Producto 1</td>
-            <td>Proveedor 1</td>
+            <td>1234</td>
+            <td>Alfajor Fulbito</td>
+            <td>20</td>
+            <td>100</td>
+            <td>Alfajores</td>
             <td> 22-08-23 </td>
             <td>
               <div className="buttonAction">
@@ -78,8 +83,11 @@ const Tablemercaderia = ({setMenuproduccion}) => {
             </td>
           </tr>
           <tr>
-            <td>Producto 1</td>
-            <td>Proveedor 1</td>
+            <td>1234</td>
+            <td>Alfajor Fulbito</td>
+            <td>20</td>
+            <td>100</td>
+            <td>Alfajores</td>
             <td> 22-08-23 </td>
             <td>
               <div className="buttonAction">
@@ -88,7 +96,7 @@ const Tablemercaderia = ({setMenuproduccion}) => {
                 </span>
                 <span
                   onClick={() => {
-                    handleEdit("addClient");
+                    handleEdit("addMercaderia");
                   }}
                 >
                   <FiEdit />{" "}
@@ -100,8 +108,11 @@ const Tablemercaderia = ({setMenuproduccion}) => {
             </td>
           </tr>
           <tr>
-            <td>Producto 1</td>
-            <td>Proveedor 1</td>
+            <td>1234</td>
+            <td>Alfajor Fulbito</td>
+            <td>20</td>
+            <td>100</td>
+            <td>Alfajores</td>
             <td> 22-08-23 </td>
             <td>
               <div className="buttonAction">
@@ -110,7 +121,7 @@ const Tablemercaderia = ({setMenuproduccion}) => {
                 </span>
                 <span
                   onClick={() => {
-                    handleEdit("addClient");
+                    handleEdit("addMercaderia");
                   }}
                 >
                   <FiEdit />{" "}
@@ -122,8 +133,11 @@ const Tablemercaderia = ({setMenuproduccion}) => {
             </td>
           </tr>
           <tr>
-            <td>Producto 1</td>
-            <td>Proveedor 1</td>
+            <td>1234</td>
+            <td>Alfajor Fulbito</td>
+            <td>20</td>
+            <td>100</td>
+            <td>Alfajores</td>
             <td> 22-08-23 </td>
             <td>
               <div className="buttonAction">
@@ -132,7 +146,7 @@ const Tablemercaderia = ({setMenuproduccion}) => {
                 </span>
                 <span
                   onClick={() => {
-                    handleEdit("addClient");
+                    handleEdit("addMercaderia");
                   }}
                 >
                   <FiEdit />{" "}
@@ -144,8 +158,11 @@ const Tablemercaderia = ({setMenuproduccion}) => {
             </td>
           </tr>
           <tr>
-            <td>Producto 1</td>
-            <td>Proveedor 1</td>
+            <td>1234</td>
+            <td>Alfajor Fulbito</td>
+            <td>20</td>
+            <td>100</td>
+            <td>Alfajores</td>
             <td> 22-08-23 </td>
             <td>
               <div className="buttonAction">
@@ -154,7 +171,7 @@ const Tablemercaderia = ({setMenuproduccion}) => {
                 </span>
                 <span
                   onClick={() => {
-                    handleEdit("addClient");
+                    handleEdit("addMercaderia");
                   }}
                 >
                   <FiEdit />{" "}

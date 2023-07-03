@@ -1,174 +1,162 @@
 
 import { FiTrash,FiEye,FiEdit } from "react-icons/fi";
+import { FiBook } from "react-icons/fi";
 import Swal from 'sweetalert2'
 
 const Tablepedidos = ({setSubmenu}) => {
-    const Modalinfo=()=>{
-        Swal.fire({
-          title: '<strong>Detalle del Pedido <u>#</u></strong>',
-          icon: 'info',
-          html:
-            '<p align="left"><b>N° de Orden: </b>, 0035 </br></br> ' +
-            '<b>Cliente: </b>, Aldo </br></br>' +
-            '<b>Fecha de Pedido: </b>, 01-08-23 </br></br>' +
-            '<b>Fecha de entrega: </b>, 22-08-23 </br></br>' +
-            '<b>Detalle:</p></br></br> </b> <b>Nombre: </b>producto 1 &nbsp  <b>Cantidad: </b> 24  &nbsp<b>Monto: </b>  $2000</br></br> ' +
-            ' <b>Nombre: </b>producto 2 &nbsp  <b>Cantidad: </b> 14  &nbsp<b>Monto: </b>  $5000</br></br> '+ 
-            '<b>Nombre: </b>producto 3 &nbsp  <b>Cantidad: </b> 4  &nbsp<b>Monto: </b>  $7000</br></br> ' +
-            '<b>Total a Pagar: </b>$14000 </br></br>'
-            ,
-          showCloseButton: true,
-          showCancelButton: true,
-          focusConfirm: false,
-          confirmButtonText:
-            'Genial!',
-          confirmButtonAriaLabel: 'Thumbs up, great!',
-          cancelButtonText:
-            'Cancelar',
-          cancelButtonAriaLabel: 'Thumbs down'
-        })
-      }
-    
-      const Modaldelete=()=>{
-          Swal.fire({
-        title: '¿Esta seguro de Eliminar el Pedido?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Eliminar!',
-            'Su archivo ha sido eliminado.',
-            'éxito'
-          )
-        }
-      })
-      }
     
       const handleEdit=(e)=>{
         setSubmenu(e)
       }
     
+      const handleSubmit = (e) => {
+        e.preventDefault();
     
+        Swal.fire({
+          title: "¿Quieres guardar los Datos de la Compra?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Guardar",
+          denyButtonText: `No Guardar`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire("¡Salvado!", "", "éxito");
+            setMenucompras('registrocompra')
+          } else if (result.isDenied) {
+            Swal.fire("Los cambios no se guardan", "", "info");
+          }
+        });
+      };
+
       return (
-       <>
-        <table>
-          <thead>
-            <tr>
-              <th>N° Orden</th>
-              <th>Cliente</th>
-              <th>Fecha de Entrega</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-             
-              <td>0035</td>
-              <td>Aldo</td>
-              <td> 22-08-23 </td>
-              <td>
-              <div className="buttonAction">
-                    <span
-                    onClick={Modalinfo}
-                    ><FiEye/> </span>
-                    <span
-                    onClick={()=>{handleEdit('addpedido')}}
-                    ><FiEdit/> </span>
-                    <span
-                    onClick={Modaldelete}
-                    ><FiTrash/> </span>
-                </div>
-              </td>
+          <div className="bodyTable">
+            <form className="colorful-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="form-label " htmlFor="name">
+                  Id:<span className="marcas">*</span> 
+                </label>
+                <input
+                  required
+                  placeholder="Id autogenerado"
+                  className="form-input"
+                  type="text"
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="email">
+                  Fecha:<span className="marcas">*</span> 
+                </label>
+                <input
+                  required
+                  placeholder="Seleccione la fecha de la compra"
+                  className="form-input"
+                  name="nombre"
+                  id="nombre"
+                  type="date"
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="email">
+                  Cliente:<span className="marcas">*</span> 
+                </label>
+                <input
+                  required
+                  placeholder="Nombre Cliente"
+                  className="form-input"
+                  name="date"
+                  id="date"
+                  type="text"
+                />
+              </div>
+              <div> </div>
             
-            </tr>
-            <tr>
-             
-              <td>0035</td>
-              <td>Aldo</td>
-              <td> 22-08-23 </td>
-              <td>
-              <div className="buttonAction">
-                    <span
-                    onClick={Modalinfo}
-                    ><FiEye/> </span>
-                    <span
-                    onClick={()=>{handleEdit('addpedido')}}
-                    ><FiEdit/> </span>
-                    <span
-                    onClick={Modaldelete}
-                    ><FiTrash/> </span>
-                </div>
-              </td>
-            
-            </tr>
-            <tr>
-             
-             <td>0035</td>
-             <td>Aldo</td>
-             <td> 22-08-23 </td>
-             <td>
-             <div className="buttonAction">
-                   <span
-                   onClick={Modalinfo}
-                   ><FiEye/> </span>
-                   <span
-                   onClick={()=>{handleEdit('addpedido')}}
-                   ><FiEdit/> </span>
-                   <span
-                   onClick={Modaldelete}
-                   ><FiTrash/> </span>
-               </div>
-             </td>
-           
-           </tr>
-           <tr>
-             
-             <td>0035</td>
-             <td>Aldo</td>
-             <td> 22-08-23 </td>
-             <td>
-             <div className="buttonAction">
-                   <span
-                   onClick={Modalinfo}
-                   ><FiEye/> </span>
-                   <span
-                   onClick={()=>{handleEdit('addpedido')}}
-                   ><FiEdit/> </span>
-                   <span
-                   onClick={Modaldelete}
-                   ><FiTrash/> </span>
-               </div>
-             </td>
-           
-           </tr>
-           <tr>
-             
-             <td>0035</td>
-             <td>Aldo</td>
-             <td> 22-08-23 </td>
-             <td>
-             <div className="buttonAction">
-                   <span
-                   onClick={Modalinfo}
-                   ><FiEye/> </span>
-                   <span
-                   onClick={()=>{handleEdit('addpedido')}}
-                   ><FiEdit/> </span>
-                   <span
-                   onClick={Modaldelete}
-                   ><FiTrash/> </span>
-               </div>
-             </td>
-           
-           </tr>
-          </tbody>
-        </table>
-       </>
-      )
+              <div className="form-group">
+                <label className="form-label" htmlFor="email">
+                  <span className="marcas"></span> 
+                </label>
+  
+              </div>
+              <div className="form-group tableForm">
+                <table>
+                  <tr>
+                    <td>
+                      <label className="form-label" htmlFor="email">
+                        Producto:<span className="marcas">*</span> 
+                      </label>
+                      <select
+                        name="pets"
+                        id="pet-select"
+                        className="form-input "
+                        required
+                      >
+                        <option value="">Seleccione un Producto</option>
+                        <option value="argentina">Producto1</option>
+                        <option value="brazil">Producto2</option>
+                        <option value="uruguay">Producto3</option>
+                        <option value="paraguay">Producto4</option>
+                        <option value="chile">Producto5</option>
+                        <option value="colombia">Producto6</option>
+                      </select>
+                    </td>
+                    <td>
+                      <label className="form-label labelsmall" htmlFor="email">
+                        Cantidad:<span className="marcas">*</span> 
+                      </label>
+                      <input
+                        required
+                        placeholder="Ingrese la cantidad"
+                        className="form-input"
+                        name="dni"
+                        id="dni"
+                        type="number"
+                      />
+                    </td>
+                    <td>
+                      <label className="form-label" htmlFor="email">
+                        Precio:<span className="marcas"></span> 
+                      </label>
+                      <input
+                        placeholder="Ingrese el precio"
+                        className="form-input"
+                        name="dni"
+                        id="dni"
+                        type="number"
+                      />
+                    </td>
+                    <td>
+                      <label className="form-label" htmlFor="email">
+                        Subtotal:
+                      </label>
+                      <label className="form-label" htmlFor="email">
+                        $500
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <button className="form-button">Agregar +</button>
+                  </tr>
+                  <td>
+                      <label className="form-label" htmlFor="email">
+                        Total:
+                      </label>
+                      <label className="form-label" htmlFor="email">
+                       <span className="totalcompra">$500</span>
+                      </label>
+                    </td>
+                </table>
+              </div>
+              <button className="form-button" type="submit">
+                Guardar
+              </button>
+            </form>
+  
+            <span className="formAlert">
+              {" "}
+              los campos con el signo ( * ) son obligatorios
+            </span>
+          </div>
+        )
 }
 
 export default Tablepedidos

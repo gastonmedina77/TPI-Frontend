@@ -10,8 +10,6 @@ const Seccionventas = ({ setMenuventas }) => {
     setMenuventas(e);
   };
 
-  
-
   return (
     <>
       <div className="navregistroventas">
@@ -20,20 +18,20 @@ const Seccionventas = ({ setMenuventas }) => {
             className={submenu === "pedidos" ? "active" : ""}
             onClick={() => setSubmenu("pedidos")}
           >
-            Registro de pedidos
+            Registrar Nueva Venta
           </li>
           <li
             className={submenu === "ventas" ? "active" : ""}
             onClick={() => setSubmenu("ventas")}
           >
-            Registro de Ventas
+            Mostrar Ventas Realizadas
           </li>
         </ul>
       </div>
       
       {submenu === 'pedidos'&&<Registropedidos setSubmenu={setSubmenu}/>}
       {submenu === 'ventas'&&<Registroventas setSubmenu={setSubmenu}/>}
-      {submenu === 'addpedido'&&<Formpedido setSubmenu={setSubmenu}/>}
+      
     </>
   );
 };

@@ -46,12 +46,12 @@ const ItemNav = () => {
             </NavLink>
             
             <NavLink to='estadisticas' className='link'>
-            <li
-            onClick={()=>handleChange('estadisticas')}
-            className={item === 'estadisticas'?'active':''}
-            >
-            <FiBarChart2/>
-            Estadísticas</li>
+              <li
+              onClick={()=>handleChange('estadisticas')}
+              className={item === 'estadisticas'?'active':''}
+              >
+              <FiBarChart2/>
+             Estadísticas</li>
             </NavLink>
         </ul>
 
