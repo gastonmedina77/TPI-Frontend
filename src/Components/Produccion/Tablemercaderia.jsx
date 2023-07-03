@@ -15,7 +15,7 @@ const ShowProducts = () => {
   useEffect(()=>{
     getProducts()
   }, [])
-
+ 
   //funcion para mostrar todos los productos
   const getProducts = async () =>{
     const res = await axios.get(URI)
