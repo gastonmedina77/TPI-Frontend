@@ -22,7 +22,7 @@ const Registromercaderia = ({setMenuproduccion}) => {
         
         <Tablemercaderia setMenuproduccion={setMenuproduccion}/>
         
-        <Paginacion/>
+        {/* <Paginacion/> */}
       </div>
     </div>
     
