@@ -1,8 +1,18 @@
 import { FiBook } from "react-icons/fi";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const URI = 'http://localhost:3000/'
 
 const Formulariomercaderia = ({setMenuproduccion}) => {
 
+  const [nombre, setNombre] = useState('')
+  const [stock, setStock] = useState('')
+  const [precio, setPrecio] = useState('')
+  const [categoria, setCategoria] = useState('')
+  const [fecha, setFecha] = useState('')
 
   const handleproveedor=()=>{
     return location.replace('usuarios')
@@ -16,8 +26,9 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
     setMenuproduccion(e);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    await axios.post(URI, {producto_nombre:nombre, stock:stock, precio:precio, categoria:categoria, fecha_actualizacion:fecha})
 
     Swal.fire({
       title: "¿Quieres guardar el Nuevo Producto?",
@@ -51,7 +62,7 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
 
         <div className="bodyTable">
           <form className="colorful-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label className="form-label" htmlFor="name">
                 Id:
               </label>
@@ -61,13 +72,15 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 className="form-input"
                 type="number"
               />
-            </div>
+            </div> */}
             <div className="form-group">
               <label className="form-label" htmlFor="email">
                 Nombre:*
               </label>
               <input
                 required
+                value={nombre}
+                onChange={(e)=>setNombre(e.target.value)}
                 placeholder="Nombre del producto"
                 className="form-input"
                 name="Nombre"
@@ -82,6 +95,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
               </label>
               <input
                 required
+                value={stock}
+                onChange={(e)=>setStock(e.target.value)}
                 placeholder="Ingrese la cantidad"
                 className="form-input"
                 name="Stock"
@@ -96,6 +111,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
               </label>
               <input
                 required
+                value={precio}
+                onChange={(e)=>setPrecio(e.target.value)}
                 placeholder="Indique el precio"
                 className="form-input"
                 name="Precio"
@@ -109,7 +126,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 Categoria:
               </label>
               <input
-                
+                value={categoria}
+                onChange={(e)=>setCategoria(e.target.value)}
                 placeholder="Categoria del producto"
                 className="form-input"
                 name="Categoria"
@@ -122,7 +140,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 Fecha Actualización:*
               </label>
               <input
-                
+                value={fecha}
+                onChange={(e)=>setFecha(e.target.value)}
                 placeholder="Fecha autogenerada"
                 className="form-input"
                 name="Fecha"
