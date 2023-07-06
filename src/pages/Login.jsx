@@ -24,7 +24,7 @@ const handleSubmit=(e)=>{
         <div className="form-box">
             <div className="form-value">
                 <form onSubmit={handleSubmit}>
-                    <h2 className='titleLogin'>Reciplas</h2>
+                    <h2 className='titleLogin'>BardePedro</h2>
                     <h2 className='titleLogin'>Iniciar Sesión</h2>
                     <div className="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
