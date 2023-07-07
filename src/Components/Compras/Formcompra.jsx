@@ -4,14 +4,17 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 
 const URI = 'http://localhost:3000/'
+let nPrim = 1
+let aCompras = []
 
-const Formcompra = ({setMenucompras}) => {
+const Formcompra = ({setSubmenu}) => {
 
   const [proveedor, setProveedor] = useState('')
   const [fecha, setFecha] = useState('')
   const [producto, setProducto] = useState('')
   const [cantidad, setCantidad] = useState('')
   const [precio, setPrecio] = useState('')
+  
   
   //funcion para mostrar todos los productos
   const [products, setProduct] = useState([])
@@ -28,46 +31,79 @@ const Formcompra = ({setMenucompras}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    agregaItem()
     Swal.fire({
-      title: "¿Quieres guardar los datos de la compra?",
+      title: "¿Desea seguir cargando items?",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `No Guardar`,
+      confirmButtonText: "Si",
+      denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
-        guardaCompra()
+        document.getElementById("cantidad").value = "";
+        document.getElementById("precio").value = "";
       } else if (result.isDenied) {
-        Swal.fire("Los datos no se guardarán", "", "info");
+        guardaCompra()
+        //Swal.fire("Los datos no se guardarán", "", "info");
       }
     });
 
     const guardaCompra = async () =>{
-      await axios.post(URI+'guardarcompra', {proveedor:proveedor, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio})
-
-      Swal.fire({
-        title: "¿Desea seguir cargando más compras?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Si",
-        denyButtonText: `No`,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.getElementById("proveedor").value = "";
-          document.getElementById("fecha").value = "";
-          document.getElementById("cantidad").value = "";
-          document.getElementById("precio").value = "";
-        } else if (result.isDenied) {
-          setMenucompras('registrocompra')
-        }
-      })
+      await axios.post(URI+'guardarcompra', aCompras/* {proveedor:proveedor, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio} */)
+      //limpiaForm()
+      setSubmenu("compras")
+      aCompras = []
+      nPrim = 1
+      document.getElementById("proveedor").value = "";
+      document.getElementById("fecha").value = "";
+      document.getElementById("cantidad").value = "";
+      document.getElementById("precio").value = "";
+      //Swal.fire({
+      //  title: "¿Desea seguir cargando más compras?",
+      //  showDenyButton: true,
+      //  showCancelButton: true,
+      //  confirmButtonText: "Si",
+      //  denyButtonText: `No`,
+      //}).then((result) => {
+      //  if (result.isConfirmed) {
+      //    document.getElementById("proveedor").value = "";
+      //    document.getElementById("fecha").value = "";
+      //    
+      //  } else if (result.isDenied) {
+      //    
+      //  }
+      //})
     }
   };
 
-  const handleAdd = (e) => {
+  const limpiaForm = () => {
+    aCompras = []
+    nPrim = 1
+    document.getElementById("proveedor").value = "";
+    document.getElementById("fecha").value = "";
+    document.getElementById("cantidad").value = "";
+    document.getElementById("precio").value = "";
+  }
+
+  /* const handleAdd = (e) => {
     setMenucompras(e);
-  };
+  }; */
+
+  const agregaItem = () => {
+    if (nPrim == 1) {
+      aCompras.push(
+        {proveedor:proveedor, 
+          fecha:fecha,
+      })
+      nPrim = 0
+    } 
+    aCompras.push({
+        productoProductoId:producto, 
+        cantidad:cantidad, 
+        precio_unitario:precio
+    })
+  } 
+
 
   return (
     <div className="sectionTable">
@@ -181,9 +217,7 @@ const Formcompra = ({setMenucompras}) => {
                     </label>
                   </td> */}
                 </tr>
-                <tr>
-                  <button className="form-button">Agregar +</button>
-                </tr>
+
                 {/* <td>
                     <label className="form-label" htmlFor="email">
                       Total:
@@ -198,7 +232,9 @@ const Formcompra = ({setMenucompras}) => {
               Guardar
             </button>
           </form>
-
+          {/* <tr>
+            <button className="form-button" onClick={()=>agregaItem()}>Agregar +</button>
+          </tr> */}
           <span className="formAlert">
             {" "}
             los campos con el signo ( * ) son obligatorios

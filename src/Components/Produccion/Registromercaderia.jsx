@@ -4,7 +4,7 @@ import Paginacion from "../Paginacion";
 import Tablemercaderia from "./Tablemercaderia";
 import { BrowserRouter, Route } from "react-router-dom";
 
-const Registromercaderia = ({setMenuproduccion}) => {
+const Registromercaderia = ({setSubmenu}) => {
   return (
     <div className="sectionTable">
       <div className="viewTable">
@@ -21,7 +21,7 @@ const Registromercaderia = ({setMenuproduccion}) => {
           <Search/>
         </div> */}
         
-        <Tablemercaderia setMenuproduccion={setMenuproduccion}/>
+        <Tablemercaderia setSubmenu={setSubmenu}/>
         
       </div>
     </div>
