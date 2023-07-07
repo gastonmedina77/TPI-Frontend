@@ -25,10 +25,8 @@ const Tableventas = () => {
 
   //funcion para eliminar una venta
   const deleteVenta = async (id) =>{
-    const URIVEN = URI + 'eliminaventa/'
-    
     Swal.fire({
-      title: '¿Esta seguro de Eliminar la Venta?',
+      title: '¿Esta seguro de eliminar la venta?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -36,18 +34,18 @@ const Tableventas = () => {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) 
-        borraVenta()
+        borraVenta(id)
     })
 
-    const borraVenta = async () =>{
+    const borraVenta = async (id) =>{
+      const URIVEN = URI + 'eliminaventa/'
       await axios.delete(`${URIVEN}${id}`)
+      getVentas()
       Swal.fire(
         'Eliminar!',
         'Se ha eliminado la venta.',
         'éxito'
       )
-      return handleLink()
-      //setSubmenu("ventas")
     }
   }
 

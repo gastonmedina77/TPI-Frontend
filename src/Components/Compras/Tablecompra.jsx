@@ -21,10 +21,8 @@ const Tablecompra = ({setMenucompras}) => {
 
   //funcion para eliminar una venta
   const deleteCompra = async (id) =>{
-    const URICOM = URI + 'eliminacompra/'
-    
     Swal.fire({
-      title: '¿Esta seguro de Eliminar la Compra?',
+      title: '¿Esta seguro de eliminar la compra?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -32,17 +30,18 @@ const Tablecompra = ({setMenucompras}) => {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) 
-        borraCompra()
+        borraCompra(id)
     })
 
-    const borraCompra = async () =>{
+    const borraCompra = async (id) =>{
+      const URICOM = URI + 'eliminacompra/'
       await axios.delete(`${URICOM}${id}`)
+      getCompras()
       Swal.fire(
         'Eliminar!',
         'Se ha eliminado la compra.',
         'éxito'
       )
-      setSubmenu('compras')
     }
   }
 

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { trimLeft } from "@amcharts/amcharts5/.internal/core/util/Utils";
 
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const URI = 'http://localhost:3000/'
 
@@ -17,6 +17,7 @@ const ShowProducts = ({setMenuproduccion}) => {
   const [precio, setPrecio] = useState('')
   const [categoria, setCategoria] = useState('')
   const [fecha, setFecha] = useState('')
+  const navigate = useNavigate()
   const {id} = useParams()
 
   useEffect(()=>{
@@ -46,7 +47,6 @@ const ShowProducts = ({setMenuproduccion}) => {
 
   //funcion para eliminar un producto
   const deleteProduct = async (id) =>{
-    
     Swal.fire({
       title: '¿Esta seguro de eliminar el producto?',
       icon: 'warning',
@@ -56,19 +56,17 @@ const ShowProducts = ({setMenuproduccion}) => {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) 
-        borraProducto()
+        borraProducto(id)
     })
 
-    const borraProducto = async () =>{
+    const borraProducto = async (id) =>{
       await axios.delete(`${URI}${id}`)
-    
+      getProducts()
       Swal.fire(
         'Eliminar!',
         'Se ha eliminado el producto.',
         'éxito'
       )
-      setSubmenu("productos")
-      //handleAdd('productos')
     }
   }
 
