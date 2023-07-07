@@ -13,11 +13,10 @@ const Registroventas = ({setSubmenu}) => {
         
         <div className="bodyTable">
         
-          <div className="contentSearch">
+          {/* <div className="contentSearch">
             <Search/>
-          </div>
+          </div> */}
           <Tableventas setSubmenu={setSubmenu}/>
-          <Paginacion/>
 
         </div>
       </div>

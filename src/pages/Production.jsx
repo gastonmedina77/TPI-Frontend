@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Seccionproduccion from "../Components/Produccion/Seccionproduccion";
 import Formulariomercaderia from "../Components/Produccion/Formulariomercaderia";
 import Formularioproducto from "../Components/Produccion/Formularioproducto";
-import Seccionestadisticaproduccion from '../Components/Produccion/Seccionestadisticaproduccion'
+
 
 const Production = () => {
 

@@ -1,7 +1,7 @@
 import { FiPieChart} from "react-icons/fi";
 import '../css/sectionestadisticasuser.scss'
-import EstadisticasUserGrafic from "./Estadisticas/EstadisticasUserGrafic";
-import EstadisticasProveedor from "./Estadisticas/EstadisticasProveedor";
+//import EstadisticasUserGrafic from "./Estadisticas/EstadisticasUserGrafic";
+//import EstadisticasProveedor from "./Estadisticas/EstadisticasProveedor";
 
 
 const SectionestadisticaUsuarios = () => {

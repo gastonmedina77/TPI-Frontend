@@ -28,7 +28,7 @@ const Nav = () => {
             </div>
           </Link>
             
-            <div
+            {/* <div
               className={`contentIcon ${
                 item === "notificacion" ? "active" : ""
               }`}
@@ -36,7 +36,7 @@ const Nav = () => {
             >
               <FiBell />
               <div className="count">2</div>
-            </div>
+            </div> */}
             <div
               className={`contentIcon ${item === "user" ? "active" : ""}`}
               onClick={() => changleClik("user")}
@@ -56,7 +56,7 @@ const Nav = () => {
         </div>
         <div className="subNav">
           {item === "home" && <ItemNav />}
-          {item === "notificacion" && <Notification />}
+          {/* {item === "notificacion" && <Notification />} */}
           {item === "user" && <User />}
         </div>
       </div>

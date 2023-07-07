@@ -1,15 +1,15 @@
 import { FiCheckSquare } from "react-icons/fi";
 import Search from "../Search";
 import Paginacion from "../Paginacion";
-import Tablemercaderia from "./Tablemercaderia";
+import Tablecompra from "./Tablecompra";
 import { BrowserRouter, Route } from "react-router-dom";
 
-const Registromercaderia = ({setMenuproduccion}) => {
+const Registrocompra = ({setMenucompras}) => {
   return (
     <div className="sectionTable">
       <div className="viewTable">
         <div className="headTable">
-          <h4> <FiCheckSquare/> Productos Registrados</h4>
+          <h4> <FiCheckSquare/> Compras Registradas</h4>
           {/* <button 
             className='addClient'
             onClick={()=>setMenuproduccion('addMercaderia')}
@@ -21,7 +21,7 @@ const Registromercaderia = ({setMenuproduccion}) => {
           <Search/>
         </div> */}
         
-        <Tablemercaderia setMenuproduccion={setMenuproduccion}/>
+        <Tablecompra setMenucompras={setMenucompras}/>
         
       </div>
     </div>
@@ -30,4 +30,4 @@ const Registromercaderia = ({setMenuproduccion}) => {
   )
 }
 
-export default Registromercaderia
+export default Registrocompra
