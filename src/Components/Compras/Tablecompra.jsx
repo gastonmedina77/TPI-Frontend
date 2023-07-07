@@ -97,6 +97,133 @@ const Tablecompra = ({setMenucompras}) => {
       setMenucompras(e)
     }
     
+      const styleRow = {
+        "display": "block" ,
+        "width": "100px" ,
+        "align": "right"
+      }
+      const styleRow2 = {
+        "display": "block" ,
+        "width": "50px"
+      }
+
+/*       return (
+       <>
+
+        <table>
+          <thead>
+            <tr>
+              <th align={"left"} >Id</th>
+              <th align={"right"} >Fecha</th>
+              <th align={"left"} >Proveedor</th>
+              <th align={"left"} >Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={styleRow2} >034</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} >Arcorrrrrrr </td>
+              <td style={styleRow} >
+                <div className="buttonAction">
+                    <span
+                    onClick={Modalinfo}
+                    ><FiEye/> </span>
+                    <span
+                    onClick={()=>{handleEdit('addCompra')}}
+                    ><FiEdit/> </span>
+                    <span
+                    onClick={Modaldelete}
+                    ><FiTrash/> </span>
+                </div>
+              </td>
+            
+            </tr>
+            <tr>
+             
+              <td style={styleRow2} >003444</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
+                <div className="buttonAction">
+                  <span
+                    onClick={Modalinfo}
+                    ><FiEye/> </span>
+                  <span
+                    onClick={()=>{handleEdit('addCompra')}}
+                    ><FiEdit/> </span>
+                  <span
+                    onClick={Modaldelete}
+                    ><FiTrash/> </span>
+                </div>
+              </td>
+             
+            </tr>
+            <tr>
+             
+            <td style={styleRow2} >0</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
+              <div className="buttonAction">
+              <span
+                    onClick={Modalinfo}
+                    ><FiEye/> </span>
+                    <span
+                    onClick={()=>{handleEdit('addCompra')}}
+                    ><FiEdit/> </span>
+                     <span
+                    onClick={Modaldelete}
+                    ><FiTrash/> </span>
+                </div>
+              </td>
+             
+            </tr>
+            <tr>
+             
+              <td style={styleRow2} >3444</td>
+              <td style={styleRow} >25</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
+              <div className="buttonAction">
+              <span
+                    onClick={Modalinfo}
+                    ><FiEye/> </span>
+                    <span
+                    onClick={()=>{handleEdit('addCompra')}}
+                    ><FiEdit/> </span>
+                    <span
+                    onClick={Modaldelete}
+                    ><FiTrash/> </span>
+                </div>
+              </td>
+             
+            </tr>
+            <tr>
+             
+              <td style={styleRow2} >003444</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
+                <div className="buttonAction">
+                <span
+                    onClick={Modalinfo}
+                    ><FiEye/> </span>
+                    <span
+                    onClick={()=>{handleEdit('addCompra')}}
+                    ><FiEdit/> </span>
+                    <span
+                    onClick={Modaldelete}
+                    ><FiTrash/> </span>
+                </div>
+              </td>
+        
+            </tr>
+          </tbody>
+        </table>
+       </>
+      ) */
+      
     
   return (
     <table>
@@ -130,4 +257,5 @@ const Tablecompra = ({setMenucompras}) => {
     </table>
   )
 }
+
 export default Tablecompra
