@@ -49,7 +49,7 @@ const ReporteVentas = () => {
             </tbody>
           </table>
 
-            <Graficoventas/>
+            {/* <Graficoventas/> */}
         </div>
       );
 }

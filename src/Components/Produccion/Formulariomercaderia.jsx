@@ -2,34 +2,21 @@ import { FiBook } from "react-icons/fi";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Registromercaderia from "./Registromercaderia";
 
 const URI = 'http://localhost:3000/'
 
 const Formulariomercaderia = ({setMenuproduccion}) => {
-
   const [nombre, setNombre] = useState('')
   const [stock, setStock] = useState('')
   const [precio, setPrecio] = useState('')
   const [categoria, setCategoria] = useState('')
   const [fecha, setFecha] = useState('')
 
-  const handleproveedor=()=>{
-    return location.replace('usuarios')
-  }
-
-  const handleproducto=()=>{
-    return location.replace('compras')
-  }
-
-  const handleAdd = (e) => {
-    setMenuproduccion(e);
-  };
-
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await axios.post(URI, {producto_nombre:nombre, stock:stock, precio:precio, categoria:categoria, fecha_actualizacion:fecha})
-
+    
     Swal.fire({
       title: "¿Quieres guardar el Nuevo Producto?",
       showDenyButton: true,
@@ -37,15 +24,41 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
       confirmButtonText: "Guardar",
       denyButtonText: `No Guardar`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire("¡Salvado!", "", "Éxito");
-        setMenuproduccion('stock')
+        guardaProducto()
       } else if (result.isDenied) {
         Swal.fire("Los cambios no se guardan", "", "info");
       }
     });
+    const guardaProducto = async () =>{
+      await axios.post(URI, {producto_nombre:nombre, stock:stock, precio:precio, categoria:categoria, fecha_actualizacion:fecha})
+      
+      Swal.fire("¡Producto Registado!", "", "Éxito");
+      
+      Swal.fire({
+        title: "¿Desea seguir cargando más productos?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: `No`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById("nombre").value = "";
+          document.getElementById("stock").value = "";
+          document.getElementById("precio").value = "";
+          document.getElementById("categoria").value = "";
+          document.getElementById("fecha").value = "";
+        } else if (result.isDenied) {
+          handleAdd("stock")
+        }
+      })
+    }
+  }
+  
+  const handleAdd = (e) => {
+    setMenuproduccion(e);
   };
+
 
   return (
     <div className="sectionTable">
@@ -55,24 +68,13 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
             {" "}
             <FiBook /> Formulario de Registro de Producto
           </h4>
-          <button className="addClient" onClick={() => handleAdd("stock")}>
+          {/* <button className="addClient" onClick={() => handleAdd("stock")}>
             Volver a Productos
-          </button>
+          </button> */}
         </div>
 
         <div className="bodyTable">
           <form className="colorful-form" onSubmit={handleSubmit}>
-            {/* <div className="form-group">
-              <label className="form-label" htmlFor="name">
-                Id:
-              </label>
-              <input
-                required
-                placeholder="Id autogenerado"
-                className="form-input"
-                type="number"
-              />
-            </div> */}
             <div className="form-group">
               <label className="form-label" htmlFor="email">
                 Nombre:*
@@ -83,8 +85,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 onChange={(e)=>setNombre(e.target.value)}
                 placeholder="Nombre del producto"
                 className="form-input"
-                name="Nombre"
-                id="Nombre"
+                name="nombre"
+                id="nombre"
                 type="text"
               />
             </div>
@@ -99,8 +101,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 onChange={(e)=>setStock(e.target.value)}
                 placeholder="Ingrese la cantidad"
                 className="form-input"
-                name="Stock"
-                id="Stock"
+                name="stock"
+                id="stock"
                 type="number"
               />
             </div>
@@ -115,8 +117,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 onChange={(e)=>setPrecio(e.target.value)}
                 placeholder="Indique el precio"
                 className="form-input"
-                name="Precio"
-                id="Precio"
+                name="precio"
+                id="precio"
                 type="number"
               />
             </div>
@@ -130,8 +132,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 onChange={(e)=>setCategoria(e.target.value)}
                 placeholder="Categoria del producto"
                 className="form-input"
-                name="Categoria"
-                id="Categoria"
+                name="categoria"
+                id="categoria"
                 type="text"
               />
             </div>
@@ -144,8 +146,8 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
                 onChange={(e)=>setFecha(e.target.value)}
                 placeholder="Fecha autogenerada"
                 className="form-input"
-                name="Fecha"
-                id="Fecha"
+                name="fecha"
+                id="fecha"
                 type="date"
               />
             </div>

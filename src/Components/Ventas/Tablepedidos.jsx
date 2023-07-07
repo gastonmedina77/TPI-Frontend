@@ -2,161 +2,196 @@
 import { FiTrash,FiEye,FiEdit } from "react-icons/fi";
 import { FiBook } from "react-icons/fi";
 import Swal from 'sweetalert2'
+import axios from "axios";
+import { useState, useEffect} from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+const URI = 'http://localhost:3000/'
 
 const Tablepedidos = ({setSubmenu}) => {
     
-      const handleEdit=(e)=>{
-        setSubmenu(e)
-      }
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        Swal.fire({
-          title: "¿Quieres guardar los Datos de la Compra?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Guardar",
-          denyButtonText: `No Guardar`,
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            Swal.fire("¡Salvado!", "", "éxito");
-            setMenucompras('registrocompra')
-          } else if (result.isDenied) {
-            Swal.fire("Los cambios no se guardan", "", "info");
-          }
-        });
-      };
+  const [cliente, setCliente] = useState('')
+  const [fecha, setFecha] = useState('')
+  const [producto, setProducto] = useState('')
+  const [cantidad, setCantidad] = useState('')
+  const [precio, setPrecio] = useState('')
 
-      return (
-          <div className="bodyTable">
-            <form className="colorful-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label className="form-label " htmlFor="name">
-                  Id:<span className="marcas">*</span> 
-                </label>
-                <input
-                  required
-                  placeholder="Id autogenerado"
-                  className="form-input"
-                  type="text"
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label" htmlFor="email">
-                  Fecha:<span className="marcas">*</span> 
-                </label>
-                <input
-                  required
-                  placeholder="Seleccione la fecha de la compra"
-                  className="form-input"
-                  name="nombre"
-                  id="nombre"
-                  type="date"
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label" htmlFor="email">
-                  Cliente:<span className="marcas">*</span> 
-                </label>
-                <input
-                  required
-                  placeholder="Nombre Cliente"
-                  className="form-input"
-                  name="date"
-                  id="date"
-                  type="text"
-                />
-              </div>
-              <div> </div>
-            
-              <div className="form-group">
-                <label className="form-label" htmlFor="email">
-                  <span className="marcas"></span> 
-                </label>
+  //funcion para mostrar todos los productos
+  const [products, setProduct] = useState([])
+  useEffect(()=>{
+  getProducts()
+  }, [])
   
-              </div>
-              <div className="form-group tableForm">
-                <table>
-                  <tr>
-                    <td>
-                      <label className="form-label" htmlFor="email">
-                        Producto:<span className="marcas">*</span> 
-                      </label>
-                      <select
-                        name="pets"
-                        id="pet-select"
-                        className="form-input "
-                        required
-                      >
-                        <option value="">Seleccione un Producto</option>
-                        <option value="argentina">Producto1</option>
-                        <option value="brazil">Producto2</option>
-                        <option value="uruguay">Producto3</option>
-                        <option value="paraguay">Producto4</option>
-                        <option value="chile">Producto5</option>
-                        <option value="colombia">Producto6</option>
-                      </select>
-                    </td>
-                    <td>
-                      <label className="form-label labelsmall" htmlFor="email">
-                        Cantidad:<span className="marcas">*</span> 
-                      </label>
-                      <input
-                        required
-                        placeholder="Ingrese la cantidad"
-                        className="form-input"
-                        name="dni"
-                        id="dni"
-                        type="number"
-                      />
-                    </td>
-                    <td>
-                      <label className="form-label" htmlFor="email">
-                        Precio:<span className="marcas"></span> 
-                      </label>
-                      <input
-                        placeholder="Ingrese el precio"
-                        className="form-input"
-                        name="dni"
-                        id="dni"
-                        type="number"
-                      />
-                    </td>
-                    <td>
-                      <label className="form-label" htmlFor="email">
-                        Subtotal:
-                      </label>
-                      <label className="form-label" htmlFor="email">
-                        $500
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <button className="form-button">Agregar +</button>
-                  </tr>
-                  <td>
-                      <label className="form-label" htmlFor="email">
-                        Total:
-                      </label>
-                      <label className="form-label" htmlFor="email">
-                       <span className="totalcompra">$500</span>
-                      </label>
-                    </td>
-                </table>
-              </div>
-              <button className="form-button" type="submit">
-                Guardar
-              </button>
-            </form>
-  
-            <span className="formAlert">
-              {" "}
-              los campos con el signo ( * ) son obligatorios
-            </span>
+   
+  const getProducts = async () =>{
+   const res = await axios.get(URI)
+   setProduct(res.data)
+  }
+ 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    Swal.fire({
+      title: "¿Quieres guardar los Datos de la Venta?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: `No Guardar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        guardaVenta()
+      } else if (result.isDenied) {
+        Swal.fire("Los cambios no se guardarán", "", "info");
+      }
+    });
+    const guardaVenta = async () => {
+      await axios.post(URI+'guardarventa', {cliente:cliente, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio})
+
+      Swal.fire({
+        title: "¿Desea seguir cargando más ventas?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: `No`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById("cliente").value = "";
+          document.getElementById("fecha").value = "";
+          document.getElementById("cantidad").value = "";
+          document.getElementById("precio").value = "";
+        } else if (result.isDenied) {
+          setSubmenu("ventas")
+        }
+      })
+
+    }
+  };
+
+  return (
+      <div className="bodyTable">
+        <form className="colorful-form" onSubmit={handleSubmit}>
+          
+          <div className="form-group">
+            <label className="form-label" htmlFor="email">
+              Cliente:<span className="marcas">*</span> 
+            </label>
+            <input
+              required
+              value={cliente}
+              onChange={(e)=>setCliente(e.target.value)}
+              placeholder="Nombre Cliente"
+              className="form-input"
+              name="cliente"
+              id="cliente"
+              type="text"
+            />
           </div>
-        )
+          
+          <div className="form-group">
+            <label className="form-label" htmlFor="email">
+              Fecha:<span className="marcas">*</span> 
+            </label>
+            <input
+              required
+              value={fecha}
+              onChange={(e)=>setFecha(e.target.value)}
+              placeholder="Seleccione la fecha de la compra"
+              className="form-input"
+              name="fecha"
+              id="fecha"
+              type="date"
+            />
+          </div>
+          <div> </div>
+        
+          <div className="form-group">
+            <label className="form-label" htmlFor="email">
+              <span className="marcas"></span> 
+            </label>
+          </div>
+          <div className="form-group tableForm">
+            <table>
+              <tr>
+                <td>
+                  <label className="form-label" htmlFor="email">
+                    Producto:<span className="marcas">*</span> 
+                  </label>
+                  <select
+                    value={producto}
+                    onChange={(e)=>setProducto(e.target.value)}
+                    name="producto"
+                    id="producto"
+                    className="form-input "
+                    required
+                  >
+                    <option value="">Seleccione un Producto</option>
+                    {products.map((product) => (
+                      <option value={product.producto_id}>{product.producto_nombre}</option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <label className="form-label labelsmall" htmlFor="email">
+                    Cantidad:<span className="marcas">*</span> 
+                  </label>
+                  <input
+                    required
+                    value={cantidad}
+                    onChange={(e)=>setCantidad(e.target.value)}
+                    placeholder="Ingrese la cantidad"
+                    className="form-input"
+                    name="cantidad"
+                    id="cantidad"
+                    type="number"
+                  />
+                </td>
+                <td>
+                  <label className="form-label" htmlFor="email">
+                    Precio:<span className="marcas"></span> 
+                  </label>
+                  <input
+                    value={precio}
+                    onChange={(e)=>setPrecio(e.target.value)}
+                    placeholder="Ingrese el precio"
+                    className="form-input"
+                    name="precio"
+                    id="precio"
+                    type="number"
+                  />
+                </td>
+                {/* <td>
+                  <label className="form-label" htmlFor="email">
+                    Subtotal:
+                  </label>
+                  <label className="form-label" htmlFor="email">
+                    $500
+                  </label>
+                </td> */}
+              </tr>
+              <tr>
+                <button className="form-button">Agregar +</button>
+              </tr>
+              {/* <td>
+                  <label className="form-label" htmlFor="email">
+                    Total:
+                  </label>
+                  <label className="form-label" htmlFor="email">
+                   <span className="totalcompra">$500</span>
+                  </label>
+                </td> */}
+            </table>
+          </div>
+          <button className="form-button" type="submit">
+            Guardar
+          </button>
+        </form>
+        <span className="formAlert">
+          {" "}
+          los campos con el signo ( * ) son obligatorios
+        </span>
+      </div>
+    )
 }
 
 export default Tablepedidos
