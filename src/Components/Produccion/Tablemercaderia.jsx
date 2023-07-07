@@ -32,8 +32,6 @@ const ShowProducts = ({setMenuproduccion}) => {
     setFecha(res.data.fecha_actualizacion)
   }
 
-  const Modalinfo = () =>{}
-  
   //funcion para mostrar todos los productos
   const [products, setProduct] = useState([])
   useEffect(()=>{
@@ -69,7 +67,8 @@ const ShowProducts = ({setMenuproduccion}) => {
         'Se ha eliminado el producto.',
         'éxito'
       )
-      handleAdd('stock')
+      setSubmenu("productos")
+      //handleAdd('productos')
     }
   }
 
@@ -84,9 +83,9 @@ const ShowProducts = ({setMenuproduccion}) => {
     "width": "50px" ,
   }
   const handleAdd = (e) => {
-    setMenuproduccion(e);
+    setSubMenu(e);
   };
-  
+
   return (
     <div>
       <table>
@@ -110,9 +109,6 @@ const ShowProducts = ({setMenuproduccion}) => {
               <td style={styleRow} >{product.categoria} </td>
               <td style={styleRow} >
                 <div className="buttonAction">
-                  <span onClick={Modalinfo()}>
-                    <FiEye />{" "}
-                  </span>
                   <span onClick={()=>deleteProduct(product.producto_id)}>
                     <FiTrash />{" "}
                   </span>
@@ -126,6 +122,28 @@ const ShowProducts = ({setMenuproduccion}) => {
     </div>
   )
 }
+
+export default ShowProducts 
+
+//  const Modaldelete = () => {
+//    Swal.fire({
+//      title: "¿Esta seguro de eliminar este registro de compra de insumo?",
+//      icon: "warning",
+//      showCancelButton: true,
+//      confirmButtonColor: "#3085d6",
+//      cancelButtonColor: "#d33",
+//      confirmButtonText: "¡Sí, bórralo!",
+//    }).then((result) => {
+//      if (result.isConfirmed) {
+//        Swal.fire("Eliminar!", "Su archivo ha sido eliminado.", "éxito");
+//      }
+//    });
+//  };
+//
+//  const handleEdit = (e) => {
+//    setMenuproduccion(e)
+//  };
+
 
 /* const Tablemercaderia = ({setMenuproduccion}) => {
   const Modalinfo = (ev) => {
@@ -154,24 +172,3 @@ const ShowProducts = ({setMenuproduccion}) => {
       cancelButtonAriaLabel: "Thumbs down",
     });
   };} */
-
-export default ShowProducts 
-
-//  const Modaldelete = () => {
-//    Swal.fire({
-//      title: "¿Esta seguro de eliminar este registro de compra de insumo?",
-//      icon: "warning",
-//      showCancelButton: true,
-//      confirmButtonColor: "#3085d6",
-//      cancelButtonColor: "#d33",
-//      confirmButtonText: "¡Sí, bórralo!",
-//    }).then((result) => {
-//      if (result.isConfirmed) {
-//        Swal.fire("Eliminar!", "Su archivo ha sido eliminado.", "éxito");
-//      }
-//    });
-//  };
-//
-//  const handleEdit = (e) => {
-//    setMenuproduccion(e)
-//  };

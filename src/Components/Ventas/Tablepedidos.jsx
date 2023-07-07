@@ -10,7 +10,7 @@ let nPrim = 1
 let aVentas = []
 
 const Tablepedidos = ({setSubmenu}) => {
-    
+  
   const [cliente, setCliente] = useState('')
   const [fecha, setFecha] = useState('')
   const [producto, setProducto] = useState('')
@@ -51,8 +51,6 @@ const Tablepedidos = ({setSubmenu}) => {
     const guardaVenta = async () => {
       await axios.post(URI+'guardarventa', aVentas/* {cliente:cliente, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio} */)
       Swal.fire("Los datos se guardaron correctamente", "", "info");
-      //aCompras = []
-      //nPrim = 1
       setSubmenu("ventas")
       //document.getElementById("proveedor").value = "";
       //document.getElementById("fecha").value = "";

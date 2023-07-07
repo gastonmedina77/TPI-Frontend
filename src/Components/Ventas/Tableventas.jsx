@@ -97,9 +97,9 @@ const Tableventas = () => {
           <td>{venta.cliente}</td>
           <td>
             <div className="buttonAction">
-                <span onClick={Modalinfo}>
+                {/* <span onClick={Modalinfo}>
                   <FiEye/>{" "}
-                </span>
+                </span> */}
               <span onClick={()=>deleteVenta(venta.ventas_id)}>
                   <FiTrash />{" "}
               </span>

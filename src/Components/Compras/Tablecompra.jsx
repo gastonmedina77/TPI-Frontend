@@ -243,9 +243,9 @@ const Tablecompra = ({setMenucompras}) => {
             <td>{compra.proveedor}</td>
             <td>
               <div className="buttonAction">
-                <span onClick={Modalinfo}>
+                {/* <span onClick={Modalinfo}>
                   <FiEye/>{" "}
-                </span>
+                </span> */}
                 <span onClick={()=>deleteCompra(compra.compras_id)}>
                     <FiTrash />{" "}
                 </span>
