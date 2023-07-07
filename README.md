@@ -1,4 +1,4 @@
-## System Bar
+## Sistema para el Bar de Pedro - Grupo C
 ![Design preview ](./src/img/bar.png)
 
 ### Guia de instalación
