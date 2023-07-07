@@ -50,14 +50,10 @@ const Formcompra = ({setSubmenu}) => {
 
     const guardaCompra = async () =>{
       await axios.post(URI+'guardarcompra', aCompras/* {proveedor:proveedor, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio} */)
-      //limpiaForm()
-      setSubmenu("compras")
       aCompras = []
       nPrim = 1
-      document.getElementById("proveedor").value = "";
-      document.getElementById("fecha").value = "";
-      document.getElementById("cantidad").value = "";
-      document.getElementById("precio").value = "";
+      Swal.fire("Se ha registrado la compra.", "", "info");
+      setSubmenu("compras")
       //Swal.fire({
       //  title: "¿Desea seguir cargando más compras?",
       //  showDenyButton: true,
@@ -75,15 +71,6 @@ const Formcompra = ({setSubmenu}) => {
       //})
     }
   };
-
-  const limpiaForm = () => {
-    aCompras = []
-    nPrim = 1
-    document.getElementById("proveedor").value = "";
-    document.getElementById("fecha").value = "";
-    document.getElementById("cantidad").value = "";
-    document.getElementById("precio").value = "";
-  }
 
   /* const handleAdd = (e) => {
     setMenucompras(e);

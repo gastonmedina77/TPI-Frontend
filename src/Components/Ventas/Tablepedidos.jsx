@@ -50,7 +50,9 @@ const Tablepedidos = ({setSubmenu}) => {
     });
     const guardaVenta = async () => {
       await axios.post(URI+'guardarventa', aVentas/* {cliente:cliente, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio} */)
-      Swal.fire("Los datos se guardaron correctamente", "", "info");
+      aVentas = []
+      nPrim = 1
+      Swal.fire("Se ha registrado la venta.", "", "info");
       setSubmenu("ventas")
       //document.getElementById("proveedor").value = "";
       //document.getElementById("fecha").value = "";
