@@ -77,23 +77,44 @@ const Tableventas = () => {
       })
   }
 
+  //Estilos para alinear las columnas en tabla de ventas
+  const styleRow = {
+    "width": "100px" ,
+    "align": "center" ,
+
+  }
+  const styleRow2 = {
+    "align": "center" ,
+    "width": "10px" ,
+  }
+  const styleRow3 = {
+    "align": "center" ,
+    "width": "260px" ,
+  }
+
+  const styleRowAccion = {
+    "align": "center" ,
+    "width": "40px" ,
+  }
+
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Fecha</th>
-          <th>Cliente</th>
+          <th style={styleRow2}>Id</th>
+          <th style={styleRow3}>Fecha</th>
+          <th style={styleRow}>Cliente</th>
+          <th style={styleRowAccion}>Acción</th>
           {/* <th>Detalle</th> */}
         </tr>
       </thead>
       <tbody>
         {ventas.map((venta) => (
         <tr key={venta.ventas_id}>
-          <td>{venta.ventas_id}</td>
-          <td>{venta.fecha}</td>
-          <td>{venta.cliente}</td>
-          <td>
+          <td style={styleRow2}>{venta.ventas_id}</td>
+          <td style={styleRow3}>{venta.fecha}</td>
+          <td style={styleRow}>{venta.cliente}</td>
+          <td style={styleRow2}>
             <div className="buttonAction">
                 {/* <span onClick={Modalinfo}>
                   <FiEye/>{" "}

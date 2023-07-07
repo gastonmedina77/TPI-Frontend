@@ -96,15 +96,7 @@ const Tablecompra = ({setMenucompras}) => {
       setMenucompras(e)
     }
     
-      const styleRow = {
-        "display": "block" ,
-        "width": "100px" ,
-        "align": "right"
-      }
-      const styleRow2 = {
-        "display": "block" ,
-        "width": "50px"
-      }
+
 
 /*       return (
        <>
@@ -222,25 +214,45 @@ const Tablecompra = ({setMenucompras}) => {
         </table>
        </>
       ) */
-      
+
+ //Estilos para alinear las columnas en tabla de ventas
+ const styleRowProveedor = {
+  "width": "100px" ,
+  "align": "center" ,
+
+}
+const styleRowId = {
+  "align": "center" ,
+  "width": "10px" ,
+}
+const styleRow3 = {
+  "align": "center" ,
+  "width": "260px" ,
+}
+
+const styleRowAccion = {
+  "align": "center" ,
+  "width": "40px" ,
+}  
+
     
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Fecha</th>
-          <th>Proveedor</th>
-          <th>Acción</th>
+          <th style={styleRowId}>Id</th>
+          <th style={styleRow3}>Fecha</th>
+          <th style={styleRowProveedor}>Proveedor</th>
+          <th style={styleRowAccion}>Acción</th>
         </tr>
       </thead>
       <tbody>
         {compras.map((compra) => (
           <tr key={compra.compras_id}>
-            <td>{compra.compras_id}</td>
-            <td>{compra.fecha}</td>
-            <td>{compra.proveedor}</td>
-            <td>
+            <td style={styleRowId}>{compra.compras_id}</td>
+            <td style={styleRow3}>{compra.fecha}</td>
+            <td style={styleRowProveedor}>{compra.proveedor}</td>
+            <td style={styleRowId}>
               <div className="buttonAction">
                 {/* <span onClick={Modalinfo}>
                   <FiEye/>{" "}
