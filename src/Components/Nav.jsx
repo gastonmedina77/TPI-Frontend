@@ -44,15 +44,15 @@ const Nav = () => {
               <FiUser />
             </div>
           </div>
-          <div className="footerNav">
-            <Link to="/reciplas">
+{/*           <div className="footerNav">
+            <Link to="/bardePedro">
               <div className="contentIcon active ">
                 <FiLogOut />
               </div>
 
             </Link>
               <span>Salir</span>
-          </div>
+          </div> */}
         </div>
         <div className="subNav">
           {item === "home" && <ItemNav />}

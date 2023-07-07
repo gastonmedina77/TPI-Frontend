@@ -11,11 +11,7 @@ import Production from "./pages/Production";
 function App() {
 
   const router = createBrowserRouter([
-/*     {
-      path: "/reciplas/",
-      element: <Dashboard />,
-    }, */
-    
+
     {
     path: "/bardePedro/",
  
