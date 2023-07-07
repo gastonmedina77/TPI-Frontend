@@ -74,11 +74,26 @@ const ShowProducts = ({setMenuproduccion}) => {
 
   //Estilos para las columnas de la tabla
   const styleRow = {
-    "width": "90px" ,
+    "width": "60px" ,
     "align": "center" ,
 
   }
   const styleRow2 = {
+    "width": "80px" ,
+    "align": "center" ,
+
+  }
+  const styleRowId = {
+    "align": "center" ,
+    "width": "10px" ,
+  }
+
+  const styleRowId2 = {
+    "align": "center" ,
+    "width": "10px" ,
+  }
+
+  const styleRowAccion = {
     "align": "center" ,
     "width": "50px" ,
   }
@@ -91,23 +106,23 @@ const ShowProducts = ({setMenuproduccion}) => {
       <table>
         <thead>
           <tr >
-            <th >Id</th>
-            <th >Nombre</th>
+            <th style={styleRowId2}>Id</th>
+            <th style={styleRow2}>Nombre</th>
             <th >Stock</th>
             <th >Precio</th>
             <th >Categoria</th>
-            <th >Acciones</th>
+            <th >Acción</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
             <tr  key={product.producto_id}>
-              <td style={styleRow2} >{product.producto_id}</td>
+              <td style={styleRowId} >{product.producto_id}</td>
               <td style={styleRow} >{product.producto_nombre}</td>
-              <td style={styleRow2} >{product.stock}</td>
+              <td style={styleRowId} >{product.stock}</td>
               <td style={styleRow} >{product.precio} </td>
               <td style={styleRow} >{product.categoria} </td>
-              <td style={styleRow} >
+              <td style={styleRowAccion} >
                 <div className="buttonAction">
                   <span onClick={()=>deleteProduct(product.producto_id)}>
                     <FiTrash />{" "}
