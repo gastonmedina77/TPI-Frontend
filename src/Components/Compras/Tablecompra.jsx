@@ -54,26 +54,35 @@ const Tablecompra = ({setMenucompras}) => {
         setMenucompras(e)
       }
     
-    
+      const styleRow = {
+        "display": "block" ,
+        "width": "100px" ,
+        "align": "right"
+      }
+      const styleRow2 = {
+        "display": "block" ,
+        "width": "50px"
+      }
+
       return (
        <>
+
         <table>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Fecha</th>
-              <th>Proveedor</th>
-              <th>Acción</th>
+              <th align={"left"} >Id</th>
+              <th align={"right"} >Fecha</th>
+              <th align={"left"} >Proveedor</th>
+              <th align={"left"} >Acción</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-             
-              <td>0034</td>
-              <td>25-05-23</td>
-              <td> <span>Arcor</span> </td>
-              <td>
-              <div className="buttonAction">
+              <td style={styleRow2} >034</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} >Arcorrrrrrr </td>
+              <td style={styleRow} >
+                <div className="buttonAction">
                     <span
                     onClick={Modalinfo}
                     ><FiEye/> </span>
@@ -89,18 +98,18 @@ const Tablecompra = ({setMenucompras}) => {
             </tr>
             <tr>
              
-            <td>0034</td>
-              <td>25-05-23</td>
-              <td> <span>Arcor</span> </td>
-              <td>
-              <div className="buttonAction">
-              <span
+              <td style={styleRow2} >003444</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
+                <div className="buttonAction">
+                  <span
                     onClick={Modalinfo}
                     ><FiEye/> </span>
-                    <span
+                  <span
                     onClick={()=>{handleEdit('addCompra')}}
                     ><FiEdit/> </span>
-                    <span
+                  <span
                     onClick={Modaldelete}
                     ><FiTrash/> </span>
                 </div>
@@ -109,10 +118,10 @@ const Tablecompra = ({setMenucompras}) => {
             </tr>
             <tr>
              
-            <td>0034</td>
-              <td>25-05-23</td>
-              <td> <span>Arcor</span> </td>
-              <td>
+            <td style={styleRow2} >0</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
               <div className="buttonAction">
               <span
                     onClick={Modalinfo}
@@ -129,10 +138,10 @@ const Tablecompra = ({setMenucompras}) => {
             </tr>
             <tr>
              
-            <td>0034</td>
-              <td>25-05-23</td>
-              <td> <span>Arcor</span> </td>
-              <td>
+              <td style={styleRow2} >3444</td>
+              <td style={styleRow} >25</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
               <div className="buttonAction">
               <span
                     onClick={Modalinfo}
@@ -149,10 +158,10 @@ const Tablecompra = ({setMenucompras}) => {
             </tr>
             <tr>
              
-            <td>0034</td>
-              <td>25-05-23</td>
-              <td> <span>Arcor</span> </td>
-              <td>
+              <td style={styleRow2} >003444</td>
+              <td style={styleRow} >25-05-23</td>
+              <td style={styleRow} > <span>Ar</span> </td>
+              <td style={styleRow} >
                 <div className="buttonAction">
                 <span
                     onClick={Modalinfo}

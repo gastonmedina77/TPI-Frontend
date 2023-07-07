@@ -3,6 +3,9 @@ import Swal from "sweetalert2";
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { trimLeft } from "@amcharts/amcharts5/.internal/core/util/Utils";
+
+
 
 const URI = 'http://localhost:3000/'
 
@@ -32,28 +35,38 @@ const ShowProducts = () => {
     getProducts()
   }
   
+  //Estilos para las columnas de la tabla
+  const styleRow = {
+    "width": "90px" ,
+    "align": "center" ,
+
+  }
+  const styleRow2 = {
+    "align": "center" ,
+    "width": "50px" ,
+  }
   
   return (
       <table>
         <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Stock</th>
-            <th>Precio</th>
-            <th>Categoria</th>
-            <th>Acciones</th>
+          <tr >
+            <th >Id</th>
+            <th >Nombre</th>
+            <th >Stock</th>
+            <th >Precio</th>
+            <th >Categoria</th>
+            <th >Acciones</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.producto_id}>
-              <td>{product.producto_id}</td>
-              <td>{product.producto_nombre}</td>
-              <td>{product.stock}</td>
-              <td>{product.precio} </td>
-              <td>{product.categoria} </td>
-              <td>
+            <tr  key={product.producto_id}>
+              <td style={styleRow2} >{product.producto_id}</td>
+              <td style={styleRow} >{product.producto_nombre}</td>
+              <td style={styleRow2} >{product.stock}</td>
+              <td style={styleRow} >{product.precio} </td>
+              <td style={styleRow} >{product.categoria} </td>
+              <td style={styleRow} >
                 <div className="buttonAction">
                   <span onClick={Modalinfo()}>
                     <FiEye />{" "}
@@ -78,37 +91,35 @@ const ShowProducts = () => {
   );
 };
 
-export default ShowProducts;
+/* const Tablemercaderia = ({setMenuproduccion}) => {
+  const Modalinfo = (ev) => {
+    ev.preventDefault();
+    const id = ev.target.id.value
+    console.log(id);
+    Swal.fire({
+      title: "<strong>Detalle del Insumo <u>#</u></strong>",
+      icon: "info",
+      html:
+      
+        <h1>{elemento.id}</h1> +
+        '<p align="left"><b>N° de Factura: </b>, 0035 </br></br> ' +
+        "<b>Insumo: </b>, Insumo 1 </br></br>" +
+        "<b>Fecha de Compra: </b>, 01-08-23 </br></br>" +
+        "<b>Peso: </b>, 10kg </br></br>" +
+        "<b>Cantidad: </b>, 5 </br></br>" +
+        "<b>Precio Unitario: </b>, $500 </br></br>" +
+        "<b>Proveedor: </b>, Proveedor 1 </br></br></p>" ,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Genial!",
+      confirmButtonAriaLabel: "Thumbs up, great!",
+      cancelButtonText: "Cancelar",
+      cancelButtonAriaLabel: "Thumbs down",
+    });
+  };} */
 
-
-
-
-//const Tablemercaderia = ({setMenuproduccion}) => {
-//  const Modalinfo = (ev) => {
-//    ev.preventDefault();
-//    const id = ev.target.id.value
-//    console.log(id);
-//    Swal.fire({
-//      title: "<strong>Detalle del Insumo <u>#</u></strong>",
-//      icon: "info",
-//      html:
-//        <h1>{elemento.id}</h1> +
-//        '<p align="left"><b>N° de Factura: </b>, 0035 </br></br> ' +
-//        "<b>Insumo: </b>, Insumo 1 </br></br>" +
-//        "<b>Fecha de Compra: </b>, 01-08-23 </br></br>" +
-//        "<b>Peso: </b>, 10kg </br></br>" +
-//        "<b>Cantidad: </b>, 5 </br></br>" +
-//        "<b>Precio Unitario: </b>, $500 </br></br>" +
-//        "<b>Proveedor: </b>, Proveedor 1 </br></br></p>" ,
-//      showCloseButton: true,
-//      showCancelButton: true,
-//      focusConfirm: false,
-//      confirmButtonText: "Genial!",
-//      confirmButtonAriaLabel: "Thumbs up, great!",
-//      cancelButtonText: "Cancelar",
-//      cancelButtonAriaLabel: "Thumbs down",
-//    });
-//  };
+export default ShowProducts 
 
 //  const Modaldelete = () => {
 //    Swal.fire({
