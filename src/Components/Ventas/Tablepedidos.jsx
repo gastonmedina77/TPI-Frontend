@@ -1,10 +1,9 @@
-
 import { FiTrash,FiEye,FiEdit } from "react-icons/fi";
 import { FiBook } from "react-icons/fi";
 import Swal from 'sweetalert2'
 import axios from "axios";
 import { useState, useEffect} from "react";
-import { useNavigate, useParams } from "react-router-dom";
+
 
 const URI = 'http://localhost:3000/'
 

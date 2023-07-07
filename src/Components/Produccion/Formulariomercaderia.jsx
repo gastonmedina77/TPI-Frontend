@@ -2,12 +2,10 @@ import { FiBook } from "react-icons/fi";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Registromercaderia from "./Registromercaderia";
 
 const URI = 'http://localhost:3000/'
 
-const Formulariomercaderia = ({setMenuproduccion}) => {
+const Formulariomercaderia = ({setSubmenu}) => {
   const [nombre, setNombre] = useState('')
   const [stock, setStock] = useState('')
   const [precio, setPrecio] = useState('')
@@ -49,17 +47,12 @@ const Formulariomercaderia = ({setMenuproduccion}) => {
           document.getElementById("categoria").value = "";
           document.getElementById("fecha").value = "";
         } else if (result.isDenied) {
-          handleAdd("stock")
+          setSubmenu("productos")
         }
       })
     }
   }
   
-  const handleAdd = (e) => {
-    setMenuproduccion(e);
-  };
-
-
   return (
     <div className="sectionTable">
       <div className="viewTable">

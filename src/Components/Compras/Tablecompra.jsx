@@ -42,7 +42,7 @@ const Tablecompra = ({setMenucompras}) => {
         'Se ha eliminado la compra.',
         'éxito'
       )
-      setMenucompras('registrocompra')
+      setSubmenu('compras')
     }
   }
 

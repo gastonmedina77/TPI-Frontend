@@ -4,7 +4,7 @@ import Paginacion from "../Paginacion";
 import Tablecompra from "./Tablecompra";
 import { BrowserRouter, Route } from "react-router-dom";
 
-const Registrocompra = ({setMenucompras}) => {
+const Registrocompra = ({setSubmenu}) => {
   return (
     <div className="sectionTable">
       <div className="viewTable">
@@ -21,7 +21,7 @@ const Registrocompra = ({setMenucompras}) => {
           <Search/>
         </div> */}
         
-        <Tablecompra setMenucompras={setMenucompras}/>
+        <Tablecompra setSubmenu={setSubmenu}/>
         
       </div>
     </div>
