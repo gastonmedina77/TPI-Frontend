@@ -22,12 +22,12 @@ const Sectioncliente = ({setMenu}) => {
       
       <div className="bodyTable">
         <div className="contentSearch">
-          <Search/>
+          {/* <Search/> */}
           
         </div>
         
           <Table setMenu={setMenu}/>
-         <Paginacion/>
+{/*          <Paginacion/> */}
       </div>
     </div>
     <div className="resumen">
