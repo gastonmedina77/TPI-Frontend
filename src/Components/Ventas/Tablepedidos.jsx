@@ -6,6 +6,8 @@ import { useState, useEffect} from "react";
 
 
 const URI = 'http://localhost:3000/'
+let nPrim = 1
+let aVentas = []
 
 const Tablepedidos = ({setSubmenu}) => {
     
@@ -30,42 +32,66 @@ const Tablepedidos = ({setSubmenu}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    agregaItem()
     Swal.fire({
-      title: "¿Quieres guardar los Datos de la Venta?",
+      title: "¿Desea seguir cargando items?",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `No Guardar`,
+      confirmButtonText: "Si",
+      denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
-        guardaVenta()
+        document.getElementById("cantidad").value = "";
+        document.getElementById("precio").value = "";
       } else if (result.isDenied) {
-        Swal.fire("Los cambios no se guardarán", "", "info");
+        guardaVenta()
+        //Swal.fire("Los cambios no se guardarán", "", "info");
       }
     });
     const guardaVenta = async () => {
-      await axios.post(URI+'guardarventa', {cliente:cliente, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio})
-
-      Swal.fire({
-        title: "¿Desea seguir cargando más ventas?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Si",
-        denyButtonText: `No`,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.getElementById("cliente").value = "";
-          document.getElementById("fecha").value = "";
-          document.getElementById("cantidad").value = "";
-          document.getElementById("precio").value = "";
-        } else if (result.isDenied) {
-          setSubmenu("ventas")
-        }
-      })
+      await axios.post(URI+'guardarventa', aVentas/* {cliente:cliente, fecha:fecha, productoProductoId:producto, cantidad:cantidad, precio_unitario:precio} */)
+      Swal.fire("Los datos se guardaron correctamente", "", "info");
+      //aCompras = []
+      //nPrim = 1
+      setSubmenu("ventas")
+      //document.getElementById("proveedor").value = "";
+      //document.getElementById("fecha").value = "";
+      //document.getElementById("cantidad").value = "";
+      //document.getElementById("precio").value = "";
+      //Swal.fire({
+      //  title: "¿Desea seguir cargando más ventas?",
+      //  showDenyButton: true,
+      //  showCancelButton: true,
+      //  confirmButtonText: "Si",
+      //  denyButtonText: `No`,
+      //}).then((result) => {
+      //  if (result.isConfirmed) {
+      //    document.getElementById("cliente").value = "";
+      //    document.getElementById("fecha").value = "";
+      //    document.getElementById("cantidad").value = "";
+      //    document.getElementById("precio").value = "";
+      //  } else if (result.isDenied) {
+      //    setSubmenu("ventas")
+      //  }
+      //})
 
     }
-  };
+  }
+
+  const agregaItem = () => {
+    if (nPrim == 1) {
+      aVentas.push(
+        {cliente:cliente, 
+          fecha:fecha,
+      })
+      nPrim = 0
+    } 
+    aVentas.push({
+        productoProductoId:producto, 
+        cantidad:cantidad, 
+        precio_unitario:precio
+    })
+  } 
 
   return (
       <div className="bodyTable">
@@ -168,9 +194,9 @@ const Tablepedidos = ({setSubmenu}) => {
                   </label>
                 </td> */}
               </tr>
-              <tr>
+              {/* <tr>
                 <button className="form-button">Agregar +</button>
-              </tr>
+              </tr> */}
               {/* <td>
                   <label className="form-label" htmlFor="email">
                     Total:
