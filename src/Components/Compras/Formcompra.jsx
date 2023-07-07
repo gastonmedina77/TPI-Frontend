@@ -1,7 +1,7 @@
 import { FiBook } from "react-icons/fi";
 import Swal from "sweetalert2";
-import axios from 'axios';
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 const URI = 'http://localhost:3000/'
 let nPrim = 1
